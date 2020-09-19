@@ -1,3 +1,5 @@
+# Nordic nRF SOC List  
+![nrf SOCs](./pic/nrf52-series.jpg)
 [The segger IDE, Segger Embedded Studio SES, is the only IDE tool to work for Nordic nrfxxx SDK since 2020.](
 https://developer.nordicsemi.com/nRF_Connect_SDK/doc/1.3.0/nrf/gs_installing.html#installing-ses-nordic-edition)  
 # [1. Download Segger Embeded Studio for Nordic](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/1.3.0/nrf/gs_installing.html#gs-installing)  
@@ -26,7 +28,7 @@ This is a special segger embeded studio,SES, for nordic.
 ### SWD debug pins definition
 ![SWD Debug Pins](./pic/2311.debug%20pins.png)
 
-# 3. The nordic nRF5 SDK and nRF helper Tool Installation
+# 3. The nordic "nRF5 SDK" and nRF helper Tool Installation
 ## [*3.1. The first step is to install "nRF Connect for Desktop"](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_assistant.html#gs-assistant)  
 
 ## [3.2. Install "Getting Started Assistant" from "nRF Connect for Desktop"](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_assistant.html#getting-started-assistant)
@@ -54,3 +56,6 @@ nRF5 SDK is a **mature SDK** that has been specifically written for nRF5 devices
 * nRF Connect SDK is **[best for IOT devices](https://blog.nordicsemi.com/getconnected/what-is-rtos-real-time-operating-systems-for-embedded-developers)**, because it supports **versatile communication protocols** and **low power environment**.
 ![](./pic/nFRConnect_Application.webp)
 ![](./piv/../pic/nRF_Connect_01.webp)
+
+# 5 [Start a new project using "nRF SDK" in SES](https://www.antalife.com/2019/07/update-solar-powered-weather-station-3.html)
+Set up a completely new nRF52 projects in SES is not so simple, your best bet is to copy and modify an example project that resembles what you want to achieve. [example1](https://www.novelbits.io/smart-ble-lightbulb-application-nrf52/) and [example 2](https://devzone.nordicsemi.com/f/nordic-q-a/30122/starting-clean-nrf52-embedded-c-segger-embedded-studio-project/129641#129641)
