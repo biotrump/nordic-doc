@@ -35,11 +35,24 @@ This is a special segger embeded studio,SES, for nordic.
 It assists you to install and setup the other tools and environment.
 
 ## [3.3. Download nRF5 SDK](https://www.nordicsemi.com/Software-and-tools/Software/nRF5-SDK/Download#infotabs)  
-nRF5 SDK is a **mature SDK** that has been specifically written for nRF5 devices and has been used **successfully for many years**.
+nRF5 SDK is a **mature SDK** that has been specifically written for nRF5 devices and has been used **successfully for many years**.  
 ![software Architecture](./pic/Software_model-01.webp)
 
 * The nRF Connect SDK is where you begin building low power wireless applications with Nordic Semiconductor nRF52, nRF53, and nRF91 Series devices.
 * The SDK contains optimized cellular IoT (LTE-M and NB-IoT), Bluetooth Low Energy, Thread, Zigbee, and Bluetooth Mesh stacks, a range of applications, samples, and reference implementations, as well as a full suite of drivers for Nordic Semiconductor’s devices. 
+
+## [SoftDevice](https://www.nordicsemi.com/Software-and-tools/Software/nRF5-SDK) Bluetooth LE & ANT
+![](./pic/SoftDeviceS112-113-132.jpg)
+![](./pic/SoftDeviceS140-212-312.jpg)
+![](./pic/SoftDeviceS332-340.jpg)
+
+
+## nrfx : nrfx is a standalone set of drivers for peripherals present in Nordic Semiconductor's SoCs.
+The intention was to provide drivers that can be used in various environments without the necessity to integrate other parts of the SDK into them. nrfx uses the same set of peripheral drivers in various environments, from RTOSes to bare metal applications. Hence, for a given host environment, a light integration layer must be provided that implements certain specific routines, like interrupt management, critical sections, assertions, or logging. This is done by filling a predefined set of macros with proper implementations (or keeping some empty if desired) in files named:  
+nrfx_glue.h  
+nrfx_log.h  
+![nrfx-01](./pic/nrfxv2.3-driver-matrix01.jpg)
+![nrfx-02](./pic/nrfxv2.3-driver-matrix02.jpg)
 
 ## 3.4. Open an example of nRF SDK in SES to build it for PCA10056, nrf52840.
    * SES: File->Open solution-> browse to /path/sdk/examples/peripheral/blinky/pca10056/blank/ses/blinky_pca10056.emProject
@@ -59,3 +72,6 @@ nRF5 SDK is a **mature SDK** that has been specifically written for nRF5 devices
 
 # 5 [Start a new project using "nRF SDK" in SES](https://www.antalife.com/2019/07/update-solar-powered-weather-station-3.html)
 Set up a completely new nRF52 projects in SES is not so simple, your best bet is to copy and modify an example project that resembles what you want to achieve. [example1](https://www.novelbits.io/smart-ble-lightbulb-application-nrf52/) and [example 2](https://devzone.nordicsemi.com/f/nordic-q-a/30122/starting-clean-nrf52-embedded-c-segger-embedded-studio-project/129641#129641)
+
+# 6. FreeRTOS
+/path/to/nrfSDK/examples/ble_peripheral/ble_app_hrs_freertos
