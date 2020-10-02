@@ -43,6 +43,12 @@ When the **external board is powered**, the **interface MCU, segger OB IF** will
 * R2, R3, R4, R9, R10, R11, R12, R20, R21, R35 are not soldered on the DB, so they are "open/disconnected".
 * pin_number of J12 and J13 : these numbers are not pin number but the port0.pin_number. 
 
+## SWD exports a USB ttyport, ttyACM0, to output debug log.
+![ttyACM0](./pic/swd-ttyACM0-baud-rate.png)  
+
+## nrf52840 uart to segger interface MCU.
+![virtual com](./pic/pca10056-nrf52840-virtual-com-port.jpg)
+
 # 4. The nordic "nRF5 SDK" and nRF helper Tool Installation
 ## [*4.1. The first step is to install "nRF Connect for Desktop"](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_assistant.html#gs-assistant)  
 
