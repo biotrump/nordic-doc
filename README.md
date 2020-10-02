@@ -18,23 +18,38 @@ This is a special segger embeded studio,SES, for nordic.
 ### After segger j-link tool is installed in your PC, "nRF Connect for Desktop" tool can automatically update firmware to segger j-link, so this is the first step to work for Nordic nrf board.
 ![jlink lite](./pic/J-Link_LITE_CortexM_5V_x500.png)
 
-## debug nRF52840DK, pca10056
+# 3. SWD/jtag debug connection
+## Debug nRF52840DK, pca10056 by onboard segger mcu.
 ![SWD debug](./pic/ot-ncp-nrf52840-debug-port.png)
 
-## Debug an external board by nRF DK's debug port
-![debug external board](./pic/nrfdk_to_debug_external_board.jpg)
-![drawing](./pic/nRFDK-Debug-External-Board.jpg)
-
-### SWD debug pins definition
+### SWD debug pins definition of PCA10056
 ![SWD Debug Pins](./pic/2311.debug%20pins.png)
 
-# 3. The nordic "nRF5 SDK" and nRF helper Tool Installation
-## [*3.1. The first step is to install "nRF Connect for Desktop"](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_assistant.html#gs-assistant)  
 
-## [3.2. Install "Getting Started Assistant" from "nRF Connect for Desktop"](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_assistant.html#getting-started-assistant)
+## Debug an external board by pca10056 debug port  
+The pca10056 DK board supports **programming and debugging external boards** with nRF51 or nRF52 SoCs.
+
+### MDBT42Q-DB (MDBT42Q-512K, nRF52832)
+![debug external board](./pic/nrfdk_to_debug_external_board.jpg)  
+
+To debug an external board with SEGGER J-Link OB IF, connect to the **Debug out connector (P19)** with a **10-pin cable**. **Red side** is pin1.
+
+![drawing](./pic/nRFDK-Debug-External-Board.jpg)  
+When the **external board is powered**, the **interface MCU, segger OB IF** will **detect** the supply voltage of the board and
+**program/debug the target chip on the external board** instead of the onboard nRF52840 SoC.  
+
+### MDBT42Q-DB-V1
+![MDBT42Q-DB-V1](./pic/MDBT42Q-DB-V1.jpg)  
+* R2, R3, R4, R9, R10, R11, R12, R20, R21, R35 are not soldered on the DB, so they are "open/disconnected".
+* pin_number of J12 and J13 : these numbers are not pin number but the port0.pin_number. 
+
+# 4. The nordic "nRF5 SDK" and nRF helper Tool Installation
+## [*4.1. The first step is to install "nRF Connect for Desktop"](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_assistant.html#gs-assistant)  
+
+## [4.2. Install "Getting Started Assistant" from "nRF Connect for Desktop"](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_assistant.html#getting-started-assistant)
 It assists you to install and setup the other tools and environment.
 
-## [3.3. Download nRF5 SDK](https://www.nordicsemi.com/Software-and-tools/Software/nRF5-SDK/Download#infotabs)  
+## [4.3. Download nRF5 SDK](https://www.nordicsemi.com/Software-and-tools/Software/nRF5-SDK/Download#infotabs)  
 nRF5 SDK is a **mature SDK** that has been specifically written for nRF5 devices and has been used **successfully for many years**.  
 ![software Architecture](./pic/Software_model-01.webp)
 
@@ -54,13 +69,18 @@ nrfx_log.h
 ![nrfx-01](./pic/nrfxv2.3-driver-matrix01.jpg)
 ![nrfx-02](./pic/nrfxv2.3-driver-matrix02.jpg)
 
-## 3.4. Open an example of nRF SDK in SES to build it for PCA10056, nrf52840.
+## 4.4. Open an example of nRF SDK in SES 
+
+### build for PCA10056, nrf52840.
    * SES: File->Open solution-> browse to /path/sdk/examples/peripheral/blinky/pca10056/blank/ses/blinky_pca10056.emProject
    * open blinky_pca10056.emProject
    * build the solution.
    * Target-> Download blinky_pca10056
 
-# 4. Zephyr RTOS, nRF Connect SDK, for nRF52 and nordic SOCs
+### build for PCA10040, nRF52832.  
+MDBT42Q-DB can use pca10040 board as a base to develop.
+
+# 5. Zephyr RTOS, nRF Connect SDK, for nRF52 and nordic SOCs
 * **nRF Connect SDK** and **nRF5 SDK** are **completely different**. 
 * The similarity is that **both use nrfx** as a basis for low-level peripheral drivers (but have their own higher level driver API's on top). **Other than that they are completely different**.  
 * **Most importantly nRF5 SDK is a mature SDK that has been specifically written for nRF5 devices and has been used successfully for many years.**  
@@ -70,8 +90,8 @@ nrfx_log.h
 ![](./pic/nFRConnect_Application.webp)
 ![](./piv/../pic/nRF_Connect_01.webp)
 
-# 5 [Start a new project using "nRF SDK" in SES](https://www.antalife.com/2019/07/update-solar-powered-weather-station-3.html)
+# 6 [Start a new project using "nRF SDK" in SES](https://www.antalife.com/2019/07/update-solar-powered-weather-station-3.html)
 Set up a completely new nRF52 projects in SES is not so simple, your best bet is to copy and modify an example project that resembles what you want to achieve. [example1](https://www.novelbits.io/smart-ble-lightbulb-application-nrf52/) and [example 2](https://devzone.nordicsemi.com/f/nordic-q-a/30122/starting-clean-nrf52-embedded-c-segger-embedded-studio-project/129641#129641)
 
-# 6. FreeRTOS
+# 7. FreeRTOS
 /path/to/nrfSDK/examples/ble_peripheral/ble_app_hrs_freertos
