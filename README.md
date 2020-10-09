@@ -123,3 +123,6 @@ Set up a completely new nRF52 projects in SES is not so simple, your best bet is
 
 # 7. FreeRTOS
 /path/to/nrfSDK/examples/ble_peripheral/ble_app_hrs_freertos
+
+# 8. User Program Guide for nRF functions.
+## [Application Note](Notes/0.UART.md)
