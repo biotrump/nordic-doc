@@ -24,6 +24,10 @@ $(StudioDir)/gcc/$(GCCTarget)/bin
 ![jlink lite](./pic/J-Link_LITE_CortexM_5V_x500.png)
 
 # 3. SWD/jtag debug by Segger Interface MCU
+## Serial Wire Debug, SWD : 2-Pin Debug Port
+* **SWDCLK, Input** : Clock signal to target CPU. It is recommended that this pin is pulled to a defined state of the target board. Shared with TMS on targets which support JTAG and SWD.
+* **SWDIO, I/O** : Bi-directional data pin. This pin should be pulled up on the target. Shared with TMS on targets which support JTAG and SWD.
+
 
 The interface MCU on the nRF52840 DK board runs **SEGGER J-Link OB interface** firmware and is used to
 **program and debug** the firmware of the nRF52 SoC.  
