@@ -2,11 +2,16 @@
 ![nrf SOCs](./pic/nrf52-series.jpg)
 [The segger IDE, Segger Embedded Studio SES, is the only IDE tool to work for Nordic nrfxxx SDK since 2020.](
 https://developer.nordicsemi.com/nRF_Connect_SDK/doc/1.3.0/nrf/gs_installing.html#installing-ses-nordic-edition)  
-# [1. Download Segger Embeded Studio for Nordic](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/1.3.0/nrf/gs_installing.html#gs-installing)  
-This is a special segger embeded studio,SES, for nordic.
-**V4.30a is revised by nordic socs**.  
+# [1. Download Segger Embeded Studio for Nordic](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/1.3.1/nrf/gs_installing.html#gs-installing)  
+## [Detail](https://infocenter.nordicsemi.com/topic/ug_gsg_ses/UG/gsg/intro.html)
+
 ![skip license check](./pic/Segger-SES-SKIP-License-Expiration.jpg)
 ![SES](./pic/SeggerEmbeddedStudio-SES.jpg)  
+
+## Setup correct arm toolchain for nrf projects.
+Open a project and set the toolchain path.  
+$(StudioDir)/gcc/$(GCCTarget)/bin
+![](./pic/segger_nordic_toolchain_path.jpg)
 
 # [2. Upgrade firmware to segger j-Link is the first step for debug and download](https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb)
 
@@ -18,8 +23,27 @@ This is a special segger embeded studio,SES, for nordic.
 ### After segger j-link tool is installed in your PC, "nRF Connect for Desktop" tool can automatically update firmware to segger j-link, so this is the first step to work for Nordic nrf board.
 ![jlink lite](./pic/J-Link_LITE_CortexM_5V_x500.png)
 
-# 3. SWD/jtag debug connection
-## Debug nRF52840DK, pca10056 by onboard segger mcu.
+# 3. SWD/jtag debug by Segger Interface MCU
+
+The interface MCU on the nRF52840 DK board runs **SEGGER J-Link OB interface** firmware and is used to
+**program and debug** the firmware of the nRF52 SoC.  
+![interface mcu](./pic/segger_jlink_interface_mcu.jpg
+)  
+
+## nrf52840 uart to segger interface MCU.
+![virtual com](./pic/pca10056-nrf52840-virtual-com-port.jpg)
+* The UART signals are **routed directly** to the interface MCU. The UART pins connected to the interface MCU
+are tri-stated when no terminal is connected to the virtual COM port on the computer.
+* The terminal software used must send a Data Terminal Ready (DTR) signal to configure the
+UART interface MCU pins by enabling hardware flow control in terminal ap.
+* The P0.05 (Request to Send (RTS)) and P0.07 (Clear to Send (CTS)) can be **used freely** when **HWFC is
+disabled** on the SoC.
+* To ensure that the UART lines are not affected by the interface MCU, the solder bridges for these signals
+can be cut and later resoldered if needed. This might be necessary if UART without HWFC is needed while
+P0.05 (RTS) and P0.07 (CTS) are used for other purposes.
+
+## Debug nRF52840DK, pca10056 by onboard segger interface mcu.
+
 ![SWD debug](./pic/ot-ncp-nrf52840-debug-port.png)
 
 ### SWD debug pins definition of PCA10056
@@ -46,8 +70,6 @@ When the **external board is powered**, the **interface MCU, segger OB IF** will
 ## SWD exports a USB ttyport, ttyACM0, to output debug log.
 ![ttyACM0](./pic/swd-ttyACM0-baud-rate.png)  
 
-## nrf52840 uart to segger interface MCU.
-![virtual com](./pic/pca10056-nrf52840-virtual-com-port.jpg)
 
 # 4. The nordic "nRF5 SDK" and nRF helper Tool Installation
 ## [*4.1. The first step is to install "nRF Connect for Desktop"](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_assistant.html#gs-assistant)  
