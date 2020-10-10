@@ -13,15 +13,20 @@ Open a project and set the toolchain path.
 $(StudioDir)/gcc/$(GCCTarget)/bin
 ![](./pic/segger_nordic_toolchain_path.jpg)
 
-# [2. Upgrade firmware to segger j-Link is the first step for debug and download](https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb)
+# [2. Upgrade firmware to segger j-Link OB is the first step for debug and download](https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb)
+J-Link OB is an **on-board debug probe**.
+It turns an evaluation board into a complete evaluation kit!
+Added features include debug support and download into Flash memory.
 
-### [j-Link is an old debug device, so it needs firmware update.](https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPack)  
+### [j-Link OB may need firmware update.](https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPack)  
+
+### After segger j-link tool is installed in your PC, "nRF Connect for Desktop" tool can automatically update firmware to segger j-link OB, so this is the first step to work for Nordic nrf board.
+![](./pic/J-Link-OBs_800x800.png =240x240) ![jlink lite](./pic/J-Link_LITE_CortexM_5V_x500.png =x180)
+![OB](./pic/J-Link-OB-BasicConcept-02.png)
 
 ### New DevKit of nordic after Nov 2019 gets a free license to use segger IDE tool.  
 ### PCA10056 nRF52840-DK is NOT freely supported after Nov 2019.  
 
-### After segger j-link tool is installed in your PC, "nRF Connect for Desktop" tool can automatically update firmware to segger j-link, so this is the first step to work for Nordic nrf board.
-![jlink lite](./pic/J-Link_LITE_CortexM_5V_x500.png)
 
 # 3. SWD/jtag debug by Segger Interface MCU
 ## Serial Wire Debug, SWD : 2-Pin Debug Port
@@ -128,5 +133,5 @@ Set up a completely new nRF52 projects in SES is not so simple, your best bet is
 # 7. FreeRTOS
 /path/to/nrfSDK/examples/ble_peripheral/ble_app_hrs_freertos
 
-# 8. User Program Guide for nRF functions.
+# 8. Program Guide for nRF52 SOC.
 ## [Application Note](Notes/0.UART.md)
