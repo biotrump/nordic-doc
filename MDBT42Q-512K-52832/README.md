@@ -87,7 +87,9 @@ the user. These registers contain chip-specific information and configuration.
 # GPIO
 ![](../pic/nRF52832GPIO.jpg)
 
-## 21 GPIOTE — GPIO tasks and events
+## 21. GPIOTE — GPIO tasks and events
+* GPIO Tasks: registers to control GPIO pins
+* GPIO Event: interrupt triggered by changes of gpio level, ie, Rising edge, Falling edge, Any change.
 * The GPIO tasks and events (GPIOTE) module provides functionality for accessing GPIO pins.
 * Each GPIOTE channel can be assigned to one pin.
 * A GPIOTE block enables GPIOs to generate events(interrupts) on pin state change which can be used to carry out tasks through the PPI system. 
@@ -105,48 +107,29 @@ the user. These registers contain chip-specific information and configuration.
     * Falling edge
     * Any change
 
-21.1 Pin events and tasks
-The GPIOTE module has a number of tasks and events that can be configured to operate on individual
-GPIO pins.
-The tasks (SET[n], CLR[n] and OUT[n]) can be used for writing to individual pins, and the events (IN[n]) can
-be generated from changes occurring at the inputs of individual pins.
-The SET task will set the pin selected in CONFIG[n].PSEL to high.
-The CLR task will set the pin low.
-The effect of the OUT task on the pin is configurable in CONFIG[n].POLARITY , and can either set the pin
-high, set it low, or toggle it.
-The tasks and events are configured using the CONFIG[n] registers. Every set of SET, CLR and OUT[n]
-tasks and IN[n] events has one CONFIG[n] register associated with it.
-As long as a SET[n], CLR[n] and OUT[n] task or an IN[n] event is configured to control a pin n, the pin's
-output value will only be updated by the GPIOTE module. The pin's output value as specified in the GPIO will
-therefore be ignored as long as the pin is controlled by GPIOTE. Attempting to write a pin as a normal GPIO
-pin will have no effect. When the GPIOTE is disconnected from a pin, see MODE field in CONFIG[n] register,
-the associated pin will get the output and configuration values specified in the GPIO module.
-When conflicting tasks are triggered simultaneously (i.e. during the same clock cycle) in one channel, the
-precedence of the tasks will be as described in Table 32: Task priorities on page 157.
-Table 32: Task priorities
-Priority
-1
-2
-3
-Task
-OUT
-CLR
-SET
-Page 15721 GPIOTE — GPIO tasks and events
-When setting the CONFIG[n] registers, MODE=Disabled does not have the same effect as MODE=Task and
-POLARITY=None. In the latter case, a CLR or SET task occurring at the exact same time as OUT will end
-up with no change on the pin, according to the priorities described in the table above.
-When a GPIOTE channel is configured to operate on a pin as a task, the initial value of that pin is configured
-in the OUTINIT field of CONFIG[n].
+# 22. PPI — Programmable peripheral interconnect
+![](../pic/nRF52832PPI.jpg)
+
+* The **Programmable peripheral interconnect (PPI)** enables peripherals to interact autonomously with each other using tasks and events independent of the CPU. 
+* The PPI allows precise synchronization between peripherals when real-time application constraints exist and eliminates the need for CPU activity to implement behavior which can be predefined using PPI.
+* The PPI system has a set of channels where the **event end point (EEP)** and **task end points (TEP)** are fixed in hardware. 
+  * These fixed channels can be individually enabled, disabled, or added to PPI channel groups in the same way as ordinary PPI channels.
+* The PPI provides a mechanism to automatically trigger a task in one peripheral as a result of an event occurring in another peripheral. 
+* A task is connected to an event through a PPI channel. 
+* The PPI channel is composed of three end point registers, one EEP and two TEPs. 
+* A peripheral task is connected to a TEP using the address of the task register associated with the task. 
+* Similarly, a peripheral event is connected to an EEP using the address of the event register associated with the event.
+* On each PPI channel, the signals are synchronized to the 16 MHz clock, to avoid any internal violation of setup and hold timings. 
+  * As a consequence, events that are synchronous to the 16 MHz clock will be delayed by one clock period, while other asynchronous events will be delayed by up to one 16 MHz clock period.
+* Some of the PPI channels are pre-programmed. These channels cannot be configured by the CPU, but can be added to groups and enabled and disabled like the general purpose PPI channels. 
+  * The FORK TEP for these channels are still programmable and can be used by the application.
 
 # TWI I2C
-![](../pic/nRF52832TWII2C.jpg)
-
+![](../pic/nRF52832TWII2C.jpg)  
+![](../pic/nRF52832TWII2CPullUp.jpg)
 * A typical TWI setup consists of one master and one or more slaves.
 * This TWIM is only able to operate as a
 single master on the TWI bus.
-
-![](../pic/nRF52832TWII2CPullUp.jpg)
 
 # SAADC
 ![](../pic/nRF52832SAADC.jpg)
