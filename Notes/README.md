@@ -1,1 +1,0 @@
-# 1. [Logging by UART/RTT](./0.Logging.md)

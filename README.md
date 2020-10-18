@@ -134,4 +134,4 @@ Set up a completely new nRF52 projects in SES is not so simple, your best bet is
 /path/to/nrfSDK/examples/ble_peripheral/ble_app_hrs_freertos
 
 # 8. Program Guide for nRF52 SOC.
-## [Application Note](Notes/0.UART.md)
+## [Application Note](app-notes/README.md)

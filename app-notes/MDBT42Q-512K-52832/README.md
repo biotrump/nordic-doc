@@ -2,30 +2,30 @@
 64KB SRAM, 512KB Flash
 
 ## nRF SOC tables  
-![nrf SOCs](../pic/nrf52-series.jpg)  
+![nrf SOCs](./pic/nrf52-series.jpg)  
 
-![](../pic/nRF52832MemorySize.jpg)
+![](./pic/nRF52832MemorySize.jpg)
 
 ## schematic
-![schematic](../pic/MDBT42Q-DB-V1.jpg)
+![schematic](./pic/MDBT42Q-DB-V1.jpg)
 
 # [Pin Table in Google Drive](https://docs.google.com/spreadsheets/d/1KI1-Sdwg8mKBKlwe9-FFnI9zSHUAqnk3nffo3poKnkU/edit)
 
 # Debug and Trace
-![](../pic/nRF52832DebugAndTraceSWD.jpg)
+![](./pic/nRF52832DebugAndTraceSWD.jpg)
 
 
 # Memory Map
-![Memory Map](../pic/nRF52832MemoryMap.jpg)
+![Memory Map](./pic/nRF52832MemoryMap.jpg)
 
 # AHB multilayer
 BUS masters use **"multilayer interconnect matrix"** to access bus slaves.
 * BUS Master: The **CPU** and all of the **EasyDMAs** are AHB bus masters on the AHB multilayer
 * BUS Slaves: The **RAM** and various other modules are AHB slaves.
-![AHB](../pic/AHBMultiLayer.jpg)
+![AHB](./pic/AHBMultiLayer.jpg)
 
 # AHB Bus Master Priority
-![master priority](../pic/AHBBusMasters.jpg)
+![master priority](./pic/AHBBusMasters.jpg)
 
 # nRF52832 EasyDMA
 * Some peripherals gain direct
@@ -36,7 +36,7 @@ access to Data RAM by EasyDMA.
 * A peripheral can implement **multiple EasyDMA instances** at the same time.
   * a dedicated first channel for reading data from RAM into the peripheral at the same time as
   * a dedicated second channel for writing data to the RAM from the peripheral.  
-![easyDMA](../pic/nRF52832EasyDMA.jpg)
+![easyDMA](./pic/nRF52832EasyDMA.jpg)
 
 # EasyDMA Read/Write
 ## Type 1
@@ -56,10 +56,10 @@ MYPERIPHERAL->READER.PTR = &readerBuffer;
 MYPERIPHERAL->WRITER.MAXCNT = WRITEERBUFFER_SIZE;
 MYPERIPHERAL->WRITER.PTR = &writerBuffer;
 ```
-![](../pic/nRF52832EasyDMAReadWriteBuffer.jpg)
+![](./pic/nRF52832EasyDMAReadWriteBuffer.jpg)
 
 ## Type 2: EasyDMA array list
-![](../pic/nRF52832EasyDMAArrayList.jpg)
+![](./pic/nRF52832EasyDMAArrayList.jpg)
 * This data structure includes only a buffer with size equal to READER.MAXCNT. 
 * EasyDMA will use the READER.MAXCNT register to determine when the buffer is full.
 * This array list does not provide a mechanism to explicitly specify where the next item in the list is located.
@@ -74,18 +74,18 @@ READER.MAXCNT = BUFFER_SIZE;
 READER.PTR = &ReaderList
 ```
 # Clock Control
-![](../pic/nRF52832ClockControl.jpg)
+![](./pic/nRF52832ClockControl.jpg)
 
 # 13 FICR — Factory information configuration registers
 Factory information configuration registers (FICR) are pre-programmed in factory and cannot be erased by
 the user. These registers contain chip-specific information and configuration.
 
 # Peripheral Bus
-![](../pic/nRF52832PeripheralInterface.jpg)
+![](./pic/nRF52832PeripheralInterface.jpg)
 
 
 # GPIO
-![](../pic/nRF52832GPIO.jpg)
+![](./pic/nRF52832GPIO.jpg)
 
 ## 21. GPIOTE — GPIO tasks and events
 * GPIO Tasks: registers to control GPIO pins
@@ -108,7 +108,7 @@ the user. These registers contain chip-specific information and configuration.
     * Any change
 
 # 22. PPI — Programmable peripheral interconnect
-![](../pic/nRF52832PPI.jpg)
+![](./pic/nRF52832PPI.jpg)
 
 * The **Programmable peripheral interconnect (PPI)** enables peripherals to interact autonomously with each other using tasks and events independent of the CPU. 
 * The PPI allows precise synchronization between peripherals when real-time application constraints exist and eliminates the need for CPU activity to implement behavior which can be predefined using PPI.
@@ -125,11 +125,11 @@ the user. These registers contain chip-specific information and configuration.
   * The FORK TEP for these channels are still programmable and can be used by the application.
 
 # TWI I2C
-![](../pic/nRF52832TWII2C.jpg)  
-![](../pic/nRF52832TWII2CPullUp.jpg)
+![](./pic/nRF52832TWII2C.jpg)  
+![](./pic/nRF52832TWII2CPullUp.jpg)
 * A typical TWI setup consists of one master and one or more slaves.
 * This TWIM is only able to operate as a
 single master on the TWI bus.
 
 # SAADC
-![](../pic/nRF52832SAADC.jpg)
+![](./pic/nRF52832SAADC.jpg)
