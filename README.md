@@ -1,7 +1,11 @@
 # Nordic nRF SOC List  
 ![nrf SOCs](./pic/nrf52-series.jpg)
+![](./pic/nRFDKList.jpg)
+
 [The segger IDE, Segger Embedded Studio SES, is the only IDE tool to work for Nordic nrfxxx SDK since 2020.](
-https://developer.nordicsemi.com/nRF_Connect_SDK/doc/1.3.0/nrf/gs_installing.html#installing-ses-nordic-edition)  
+https://developer.nordicsemi.com/nRF_Connect_SDK/doc/1.3.0/nrf/gs_installing.html#installing-ses-nordic-edition)
+
+
 # [1. Download Segger Embeded Studio for Nordic](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/1.3.1/nrf/gs_installing.html#gs-installing)  
 ## [Detail](https://infocenter.nordicsemi.com/topic/ug_gsg_ses/UG/gsg/intro.html)
 
